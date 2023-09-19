@@ -18,12 +18,12 @@ export default function Dashboard() {
           {filmes.map((filme) => (
             <div
               key={filme.codigo}
-              className='border border-gray-200  bg-zinc-950  rounded-xl hover:shadow-2xl  transition-shadow duration-300'
+              className='border border-gray-200  bg-zinc-950  rounded-xl shadow-lg hover:shadow-2xl  transition-shadow duration-300'
             >
-              <div className="w-60 h-60 mx-auto mt-8">
-                <img className="rounded-md" src={filme.image} alt={filme.nome} />
-              </div>
-              <div className="text-base text-white px-4 mt-2 font-medium text-center">{filme.nome}</div>
+           
+                <img className="rounded-md w-60 h-60 mx-auto mt-8" src={filme.image} alt={filme.nome} />
+              
+              <div className="text-base text-white px-4 = font-medium text-center">{filme.nome}</div>
               <div className="text-xs text-white px-4 mt-5 text-center">{filme.resumo}</div>
               <div className="flex justify-center">
                 <button className="m-10 border border-cyan-500 text-base text-cyan-500 rounded-md w-44 h-11 items-center hover:bg-cyan-500 hover:text-white">
