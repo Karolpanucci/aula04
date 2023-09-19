@@ -29,6 +29,7 @@ export default function Login() {
   }
   return (
     < div className=' bg-gradient-to-tl  from-gray-900 to-gray-800 w-screen h-screen flex justify-center items-center '>
+      
     <main className='w-1/2 h-[500px] bg-zinc-950 rounded-3xl flex pb-10'> 
       <main className=' basis-5/12 flex flex-col  text-white pl-10'>
           <h1 className=' font-sans font-bold  text-3xl text-white my-12'>

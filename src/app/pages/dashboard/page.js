@@ -2,41 +2,86 @@ import { getFilme } from "@/app/functions/handlerAcessAPI";
 import { Suspense } from "react";
 import ListUsers from "@/app/componente/ListUsers";
 import Link from 'next/link';
+import { Eye, Gem, LogOut } from 'lucide-react';
 import '@/app/global.css';
 
 export default function Dashboard() {
   const filmes = getFilme();
 
   return (
-    <div className=' w-screen h-screen'>
-
-      <nav className="flex h-14 w-full bg-zinc-950"></nav>
-
+   
+    <div className=' bg-slate-800 min-h-screen items-center justify-between'>
       <Suspense fallback={<p>carregando...</p>}>
+      <header className="w-full bg-zinc-950">
+      <div className="flex w-full h-28 items-center">
+        <img
+          className='mt-0 ml-4 sm:ml-10'
+          src="/logo.png"
+          width={100}
+          height={100}
+          alt="Picture of the author"
+        />
+        <div className="flex items-center ml-4 sm:ml-16">
+          <div className="flex text-white">
+            <p className="mt-3 sm:mt-0 ml-4 sm:ml-20 flex hover:text-[#C850C0]"> <a href="/pages/alterar">Alterar Usuario</a> </p>
+          </div>
+          <div className="flex text-white">
+            <p className="mt-3 sm:mt-0 ml-4 sm:ml-20 flex hover:text-[#C850C0]"> <a href="/pages/registrar">Registar Novo Usuario</a>
+</p>
+          </div>
+          <div className="flex text-white">
+            <p className="mt-3 sm:mt-0 ml-4 sm:ml-20 flex hover:text-[#C850C0]"> Categorias </p>
+          </div>
+        </div>
+        <button className="flex font-bold text-[#FFCC70] p-5 mt-3 ml-auto mr-4">
+          <LogOut/>  <spam className='ml-3'>Sair</spam>
+        </button>
+        </div>
 
-        <main className="grid grid-cols-4 ml-7 mr-7 gap-4 mt-8">
-          {filmes.map((filme) => (
-            <div
-              key={filme.codigo}
-              className='border border-gray-200  bg-zinc-950  rounded-xl shadow-lg hover:shadow-2xl  transition-shadow duration-300'
-            >
+        </header>
+
+      
+        <h1 className="font-bold text-5xl ml-[35%] mt-8 text-white justify-center items-center">Seja Bem Vindo!!</h1>
+        <h2 className="font-bold text-xl ml-[35%] mt-8 text-white justify-center items-center">Aqui temos Alguns dos nossos Usuarios</h2>
+      <main className="grid grid-cols-1 md:grid-cols-4 ml-7 mr-7 gap-4 mt-8 ">
+       
+        {filmes.map((filme) => (
+          <div
+            key={filme.codigo}
+            className='bg-zinc-950 rounded-xl shadow-2xl hover:shadow-2xl hover:shadow-black transition-shadow duration-300 bg-whit'
+          >
+      
+            <div className="text-base text-white font-medium px-3 mt-3 ">{filme.nome}</div>
+            <div className="text-[12px] m-3 mt-3 text-gray-400 text-justify">{filme.resumo}</div>
            
-                <img className="rounded-md w-60 h-60 mx-auto mt-8" src={filme.image} alt={filme.nome} />
-              
-              <div className="text-base text-white px-4 = font-medium text-center">{filme.nome}</div>
-              <div className="text-xs text-white px-4 mt-5 text-center">{filme.resumo}</div>
-              <div className="flex justify-center">
-                <button className="m-10 border border-cyan-500 text-base text-cyan-500 rounded-md w-44 h-11 items-center hover:bg-cyan-500 hover:text-white">
-                  Ver mais
-                </button>
+            <div className="text-xs text-cyan-700 um= px-3 mt-3 flex">
+              <div className='flex '>
+                <div className='w-[12px] h-[12px]'>
+                  <Gem size={12} />
+                </div>
+                <div className=' ml-1'>
+                  {filme.estilo}
+                </div>
+                <div className='  ml-16 text-gray-400 flex'>
+                  <div className='w-[12px] h-[12px]'>
+                    <Eye size={12} />
+                  </div>
+                  <div className=' ml-1'>
+                    {filme.visu}
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
-        </main>
-
-        <a href="/pages/alterar">Altera ai pow</a>
-        <a href="/pages/registrar">Registra ai mano</a>
-
+            <div className="flex justify-center">
+              <button className="m-5 border border-cyan-500 text-base text-cyan-500 rounded-md w-full md:w-40 h-11 items-center hover:bg-cyan-500 hover:text-white">
+                <Link href={filme.link}>VER DETALHES</Link>
+              </button>
+            </div>
+          </div>
+        ))}
+      </main>
+        
+        
       </Suspense>
 
     </div>
