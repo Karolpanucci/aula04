@@ -89,7 +89,7 @@ const Registar = () => {
             </div>
             
           
-            <button className='bg-gradient-to-tr from-[#4158D0] via-[#C850C0] via-46% to-[#FFCC70] text-white w-[350px] font-bold h-8 rounded-lg mt-4'>Registar</button>
+            
       
             <ToastContainer/>
           </form>
