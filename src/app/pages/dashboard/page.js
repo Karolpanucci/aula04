@@ -1,13 +1,15 @@
 import { getFilme } from "@/app/functions/handlerAcessAPI";
 import { Suspense } from "react";
-import ListUsers from "@/app/componente/ListUsers";
 import Link from 'next/link';
 import { Eye, Gem, LogOut } from 'lucide-react';
 import '@/app/global.css';
 
+import { useRouter } from "next/navigation";
+import Sair from "@/app/componente/exit";
+
 export default function Dashboard() {
   const filmes = getFilme();
-
+ 
   return (
    
     <div className=' bg-slate-800 min-h-screen items-center justify-between'>
@@ -33,9 +35,8 @@ export default function Dashboard() {
             <p className="mt-3 sm:mt-0 ml-4 sm:ml-20 flex hover:text-[#C850C0]"> Categorias </p>
           </div>
         </div>
-        <button className="flex font-bold text-[#FFCC70] p-5 mt-3 ml-auto mr-4">
-          <LogOut/>  <spam className='ml-3'>Sair</spam>
-        </button>
+        <Sair/>
+       
         </div>
 
         </header>
