@@ -51,7 +51,9 @@ export default function Dashboard() {
             key={filme.codigo}
             className='bg-zinc-950 rounded-xl shadow-2xl hover:shadow-2xl hover:shadow-black transition-shadow duration-300 bg-whit'
           >
-      
+          <div className="w-full md:w-62 h-50">
+              <img className="rounded-lg " src={filme.image} alt={filme.nome} />
+            </div>
             <div className="text-base text-white font-medium px-3 mt-3 ">{filme.nome}</div>
             <div className="text-[12px] m-3 mt-3 text-gray-400 text-justify">{filme.resumo}</div>
            

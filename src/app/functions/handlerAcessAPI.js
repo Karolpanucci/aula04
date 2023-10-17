@@ -1,24 +1,7 @@
 'use server'
-let lista = [
-    {
-        nome: "karol",
-        password:"1212",
-        email:"karol@gmail.com",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    },
-    {
-        nome: "natasha",
-        password:"1313",
-        email:"marcelino@gmail.com",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    },
-    {
-        nome: "isabela",
-        password:"1414",
-        email:"isa@gmail.com",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    }
-]
+
+
+
 let filmes = [
     
     {
@@ -105,27 +88,28 @@ let filmes = [
   
 ]
 
+const url ="https://service-work-p.vercel.app"
+
+const getUserAuthenticated = async (user) => {
+ const resposeOfApi = await fetch (url+ 'user/authenticated',
+            {
+
+              method: "POST",
+              headers:{ "Content-type" : "Application/json"} ,
+              body: JSON.stringify(user)
 
 
-
-const getUserAuthenticated = (userlogin) => {
-    let userAuth= {}; 
-    lista.map((user)=>{
-        if(user.email === userlogin.email && user.password === userlogin.password){
-            userAuth= user
-        }
-    })
-     return userAuth;
-
+            }
+            )
+             const userAuth = await resposeOfApi.json()
+             return userAuth;
 
 }
 
-const getUsers = () =>{
-    return lista;
-        
-}
+       
+
 const getFilme = () =>{
     return filmes;
         
 }
-export { getUsers, getUserAuthenticated, getFilme };
+export {  getUserAuthenticated, getFilme };
