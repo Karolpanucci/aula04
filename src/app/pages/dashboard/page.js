@@ -1,4 +1,4 @@
-import { getFilme } from "@/app/functions/handlerAcessAPI";
+import { getFilme, getUsers } from "@/app/functions/handlerAcessAPI";
 import { Suspense } from "react";
 import Link from 'next/link';
 import { Eye, Gem, LogOut } from 'lucide-react';
@@ -7,8 +7,8 @@ import '@/app/global.css';
 import { useRouter } from "next/navigation";
 import Sair from "@/app/componente/exit";
 
-export default function Dashboard() {
-  const filmes = getFilme();
+export default async function Dashboard() {
+  const lista = await getUsers()
  
   return (
    
@@ -44,46 +44,9 @@ export default function Dashboard() {
       
         <h1 className="font-bold text-5xl ml-[35%] mt-8 text-white justify-center items-center">Seja Bem Vindo!!</h1>
         <h2 className="font-bold text-xl ml-[35%] mt-8 text-white justify-center items-center">Aqui temos Alguns dos nossos Usuarios</h2>
-      <main className="grid grid-cols-1 md:grid-cols-4 ml-7 mr-7 gap-4 mt-8 ">
-       
-        {filmes.map((filme) => (
-          <div
-            key={filme.codigo}
-            className='bg-zinc-950 rounded-xl shadow-2xl hover:shadow-2xl hover:shadow-black transition-shadow duration-300 bg-whit'
-          >
-          <div className="w-full md:w-62 h-50">
-              <img className="rounded-lg " src={filme.image} alt={filme.nome} />
-            </div>
-            <div className="text-base text-white font-medium px-3 mt-3 ">{filme.nome}</div>
-            <div className="text-[12px] m-3 mt-3 text-gray-400 text-justify">{filme.resumo}</div>
-           
-            <div className="text-xs text-cyan-700 um= px-3 mt-3 flex">
-              <div className='flex '>
-                <div className='w-[12px] h-[12px]'>
-                  <Gem size={12} />
-                </div>
-                <div className=' ml-1'>
-                  {filme.estilo}
-                </div>
-                <div className='  ml-16 text-gray-400 flex'>
-                  <div className='w-[12px] h-[12px]'>
-                    <Eye size={12} />
-                  </div>
-                  <div className=' ml-1'>
-                    {filme.visu}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <button className="m-5 border border-cyan-500 text-base text-cyan-500 rounded-md w-full md:w-40 h-11 items-center hover:bg-cyan-500 hover:text-white">
-                <Link href={filme.link}>VER DETALHES</Link>
-              </button>
-            </div>
-          </div>
-        ))}
-      </main>
-        
+      
+        <ListUsers users={lista} />
+
         
       </Suspense>
 

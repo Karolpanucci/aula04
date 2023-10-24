@@ -1,8 +1,10 @@
 'use server'
 
+import ListUsers from "../componente/ListUsers"
 
 
-let filmes = [
+
+/*let filmes = [
     
     {
         codigo: 1 ,
@@ -83,15 +85,15 @@ let filmes = [
         image:"/matrix2.jpg",
         visu:"15.00",
         link:"https://www.youtube.com/watch?v=Fs0-4NLSO2Y"
-    },
+    },*/
 
   
-]
+
 
 const url ="https://service-work-p.vercel.app"
 
 const getUserAuthenticated = async (user) => {
- const resposeOfApi = await fetch (url+ 'user/authenticated',
+ const resposeOfApi = await fetch (url+ '/user/authenticated',
             {
 
               method: "POST",
@@ -102,14 +104,24 @@ const getUserAuthenticated = async (user) => {
             }
             )
              const userAuth = await resposeOfApi.json()
+              console.log(userAuth);
              return userAuth;
 
 }
+ 
+const getUsers = async () =>{
+    try{
+        const resposeOfApi = await fetch(url + "/user",{
+            next: {revalidate: 10}
+        })
+        const listUsers =resposeOfApi.json()
+        return listUsers
+
+    } catch{
+        return null;
+    }
+};
 
        
 
-const getFilme = () =>{
-    return filmes;
-        
-}
-export {  getUserAuthenticated, getFilme };
+export {  getUserAuthenticated, getUsers };
