@@ -4,14 +4,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import '@/app/global.css';
 import Link from 'next/link';
 import { Eye, Gem, LogOut } from 'lucide-react';
+import { postUser} from "handlerAcessAPI";
+
+
 const Registar = () => {
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const { push } = useRouter();
 
 
   const handlerLogin = async (e) => {
     e.preventDefault();
+    try{
+      await postUser(user);
+      return push('/pages/dashbord')
+    }
+    }
   toast.error(" + um Usuario cadastrado com sucesso !!😊")
   }
-  return (
+        return (
     <>
     
     < div className=' bg-gradient-to-tl  from-gray-900 to-gray-800 w-screen h-screen '>
@@ -70,8 +83,10 @@ const Registar = () => {
                         <input
                           className='h-10 w-[350px] bg-zinc-800 rounded-lg p-2  outline-none appearance-none '
                           placeholder='E-mail'
+                          value={user.name}
                           type="email"
-                         >
+                          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
+                         
                         </input>
           
                </div>
@@ -83,8 +98,10 @@ const Registar = () => {
             <input
               className='h-10 w-[350px] bg-zinc-800 rounded-lg p-2  outline-none appearance-none '
               placeholder='Senha'
+              value={user.password}
               type='password'
-           >
+              onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
+ 
             </input>
             </div>
             

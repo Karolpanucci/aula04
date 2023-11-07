@@ -122,6 +122,20 @@ const getUsers = async () =>{
     }
 };
 
+
+const postUser = async (user) =>{
+    try{
+        const responseOfApi = await fetch(url + "/user", {
+            method: "POST",
+            headers: { 'Content-Type': 'Aplication/json'},
+            body: JSON.stringify(user)
+        });
+        const userSave = await responseOfApi.json();
+        return userSave;
+    }catch{
+       return null;
+    }
+}
        
 
-export {  getUserAuthenticated, getUsers };
+export {  getUserAuthenticated, getUsers, postUser };
