@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './estilo.css';
 import { useState } from "react";
-import { postUser } from "@/app/functions/handlerAcessAPI";
+import { postUser } from "../../functions/handlerAcessAPI";
 import { useRouter } from 'next/navigation';
 
 export default function Register(){

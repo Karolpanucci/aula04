@@ -1,7 +1,7 @@
 'use server'
 
 
-const url = "https://service-work-p-tj87.vercel.app"
+const url = "http://localhost:400"
 
 
 const getUserAuthenticated = async (user) => {
