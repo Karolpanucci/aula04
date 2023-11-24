@@ -1,7 +1,7 @@
 'use server'
 
 
-const url = "https://service-work-rdsvz1sd0-karolpanucci.vercel.app/"
+const url = "https://service-work-p-tj87.vercel.app"
 
 
 const getUserAuthenticated = async (user) => {
